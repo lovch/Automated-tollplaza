@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+//Set up the data arrays here
+        var date = [];
+        var data1 = [];
+        var data2 = [];
+        var data3 = [];
+    var data4 =[];
+    var data5=[];
+     var data6=[];
+
+$(document).ready(function() {
+ // AJAX in the data file
+    $.ajax({
+        type: "GET",
+        //url: "file:///home/tech/Desktop/Test/test.csv",
+        url: "results.csv",
+        dataType: "text",
+        success: function(data) {processData(data);}
+        });
+
+    // Let's process the data from the data file
+    function processData(data) {
+        var lines = data.trim().split('\n');
+        var lastLine = lines.slice(-1)[0];
+    /*
+        //Set up the data arrays
+        var date = [];
+        var data1 = [];
+        var data2 = [];
+        var data3 = [];
+    */
+
+        for (var j=1; j<lines.length; j++) {
+        var values = lines[j].split(','); // Split up the comma
+           date.push(values[0]); // Read in as string
+           data1.push(values[1]);
+           data2.push(values[2]);
+           data3.push(values[3]);
+            data4.push(values[4]);
+            data5.push(values[5]);
+            data6.push(values[6]);
+        }
+    //added code
+    document.getElementById("date").innerHTML=  date[date.length-1];
+    document.getElementById("data1").innerHTML=  data1[data1.length-1];
+    document.getElementById("data2").innerHTML=  data2[data2.length-1];
+    document.getElementById("data3").innerHTML=  data3[data3.length-1];
+    document.getElementById("data4").innerHTML=  data4[data4.length-1];
+      document.getElementById("data5").innerHTML=  data5[data5.length-1];
+        document.getElementById("data6").innerHTML=  data6[data6.length-1];
+    }
+})
+</script><link rel="stylesheet" href="style.css" media="all" />
+</head>
+<p>
+<div class="container">
+    <header class="clearfix">
+      <h1>INVOICE</h1>
+        <div id="company" class="clearfix">
+        <div><b>VEHICLE NUMBER:</b></div>
+        <div><center><p id="date"> 
+      <script type="text/javascript"> 
+            </script>  </p></center></div>
+    </div>
+    <div id="project">
+        <div><span>CLIENT</span><p id="data1"> 
+    <script type="text/javascript"> 
+</script> </p></div>
+        <div><span>Address:</span><p id="data3"> 
+    <script type="text/javascript"> 
+</script> </p></div>
+        <div><span>Country:</span><p id="data4"> 
+    <script type="text/javascript"> 
+</script> </p></div>
+        <div><span>phone number:</span><p id="data2"> 
+    <script type="text/javascript"> 
+</script> </p></div>
+        <div><span>Date:</span><p id="data5"> 
+    <script type="text/javascript"> 
+</script> </p></div>
+        <div><span>Due Date:</span><p id="data6"> 
+    <script type="text/javascript"> 
+</script> </p></div></br>
+    </div>
+    </header>
+    </div>
+    
+</p>
+    <main>
+      <table>
+        <thead>
+          <tr>
+            <th class="service">SERVICE</th>
+            <th class="desc">DESCRIPTION</th>
+            <th></th>
+            <th></th>
+            <th>TOTAL</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="service">Two way cross</td>
+            <td class="desc">A two way pass on Chandigarh Patiala NH64 </td>
+            <td class="unit"></td>
+            <td class="qty"></td>
+            <td class="total">₹ 320</td>
+          </tr>
+          <tr>
+            <td colspan="4">SUBTOTAL</td>
+            <td class="total">₹ 320</td>
+          </tr>
+          <tr>
+            <td colspan="4">TAX@1.5%</td>
+            <td class="total">₹ 60</td>
+          </tr>
+          <tr>
+            <td colspan="4" class="grand total">GRAND TOTAL</td>
+            <td class="grand total">₹ 380</td>
+          </tr>
+        </tbody>
+      </table>
+      <div id="notices">
+        <div>NOTICE:</div>
+        <div class="notice">A Late charge of 1.5% will be made on unpaid balances after 30 days.</div>
+      </div>
+    </main>
+    <footer>
+      Invoice was created on a computer and is valid without the signature and seal.
+        <br>Created with love in India.
+    </footer>
+  </body>
+</html>
